@@ -19,6 +19,8 @@ description: "중랑AX2030 100일 일지(claude.ai/artifact/Jxz2t6Cwiwjsjihk9gv8
 
 판단(공개 여부, 숨은 실 확정, 고비 인정)은 정책실장 몫이다. Aside는 후보와 근거만 올린다.
 
+원문: Claude 집필 지침 [references/claude-writer-task.md](references/claude-writer-task.md), GPT 지정문 [references/gpt-verifier.md](references/gpt-verifier.md), GPT 개선의견 [references/gpt-review-2026-10-29.md](references/gpt-review-2026-10-29.md). 공개본: https://github.com/goodmorninghope-khs/ax100-log-desk (이 스킬을 고치면 저장소도 함께 고친다).
+
 ## 매일 21:30 절차
 
 1. **전날 반영 점검**: 가장 최근 보낸 `[AX일지-총괄]`(없으면 `[AX일지-캘린더]`) 메일 항목이 일지에 들어갔는지 확인한다. 일지 본문은 claude.ai 아티팩트 페이지의 두 번째 프레임(`page.frames()[1]`, claudeusercontent.com)의 `document.body.innerText`로 읽는다(전체 snapshot은 100칸 격자 때문에 잘린다). 빠진 항목은 메일 R절에 "미반영"으로 다시 적는다.
