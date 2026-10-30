@@ -19,3 +19,13 @@
 - `references/gpt-review-2026-10-29.md`: GPT 개선의견 요지
 
 일지는 링크 공개 페이지라 개인정보·민원 내용·[비공개] 표시는 어떤 단계에서도 옮기지 않는다.
+
+## 연계 (밸류체인)
+
+이 저장소는 [policy-media-desk](https://github.com/goodmorninghope-khs/policy-media-desk) 밸류체인의 **① 원료 · ⑦ 되먹임** 고리다. 상태: 제안 (발행인 확인 후 실제로 이으면 '연계'로 바꾼다).
+
+- 받음: WEEKLY AX 신호 → 일지 '연결 가설' 후보
+- 넘김: AI혁신팀이 이미 한 일(일지·업무기록) → 지면 '중랑이 이미 하고 있는 일' 근거(jungnang-signal shared/reference-hub.md)
+- 넘길 때는 출처 지면(지면명·호수·날짜·링크)과 '닿는 공약'을 붙이고, 침은 의견으로 남긴다. 결정은 받는 고리의 책임자가 한다.
+
+전체 사슬: [references/value-chain.md](https://github.com/goodmorninghope-khs/policy-media-desk/blob/main/references/value-chain.md)
