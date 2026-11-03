@@ -9,7 +9,7 @@ claude.ai 예약 작업 「중랑AX2030 100일 일지 · 자동 업데이트」(
 
 [일지] Artifact 페이지 https://claude.ai/artifact/Jxz2t6Cwiwjsjihk9gv8eV 의 DB에 씁니다(ArtifactData 도구, ToolSearch로 불러오기). 페이지 HTML은 고치지 않습니다.
 - 기간: 2026-10-01(1일차, 중랑AI혁신팀 출범) ~ 2027-01-08(100일차). 오늘이 2027-01-09 이후면 "100일 일지 기간이 끝났습니다"만 알리고 종료.
-- 컬렉션 days, 문서 id = 날짜 YYYY-MM-DD. 필드: date, status("do"=실행 | "learn"=배움 | "hard"=고비), items([{title, note}]), scene(문자열, 사용자 소회), tags(배열), milestone(bool), images(배열), source(출처 문자열), draft(bool), updatedAt(ISO).
+- 컬렉션 days, 문서 id = 날짜 YYYY-MM-DD. 필드: date, status("do"=실행 | "learn"=배움 | "hard"=고비), items([{title, note}]), scene(문자열, 사용자 소회), tags(배열), milestone(bool), images(배열), works(배열, [{title, url, kind}] 제작물 링크 칩 · 2026-11-03 추가), source(출처 문자열), draft(bool), updatedAt(ISO).
 - 컬렉션 meta 의 문서 sync: {lastRun: ISO, calendarMailIds: [처리한 Gmail 메시지 id 배열], gptFileIds: [처리한 Drive 파일 id 배열]}. lastRun이 없으면 최근 3일을 조사 범위로 삼습니다.
 - 이 일지는 링크로 공개되는 페이지입니다. [비공개] 표시가 있는 내용(일정 제목·메모·항목 어디에 붙어 있든)은 어떤 필드에도 넣지 않고, 보고에도 그 내용을 옮기지 않습니다(건수만 적음).
 
@@ -36,8 +36,8 @@ claude.ai 예약 작업 「중랑AX2030 100일 일지 · 자동 업데이트」(
 
 [5. 일지 반영 규칙]
 - 사실이 확인된 일만, 날짜별로 적습니다. 일어난 날짜가 불분명하면 반영하지 말고 보고에만 적습니다. 예정된 일은 그 날이 지나기 전에는 쓰지 않습니다.
-- 그 날짜 문서가 없으면 새로 만듭니다: status는 내용에 맞게(외부 강연·교육·벤치마킹·학습=learn, 만들고 배포하고 결정한 일=do, 지연·반대·실패=hard), items는 제목(짧게) + 한 줄 설명, scene은 빈 문자열, tags 1-3개, milestone은 출범·첫 행사·공식 발표 같은 큰 일만 true, images [], source는 출처들을 " · "로 이은 문자열, draft true.
-- 그 날짜 문서가 이미 있으면: 읽은 version을 if_version으로 걸고 update 합니다. 기존 items에 없는 새 항목만 뒤에 덧붙이고 source에 새 출처를 덧붙입니다. scene, status, milestone, images, tags는 절대 바꾸거나 지우지 않습니다(사용자가 쓴 소회 보호). draft 값도 그대로 둡니다.
+- 그 날짜 문서가 없으면 새로 만듭니다: status는 내용에 맞게(외부 강연·교육·벤치마킹·학습=learn, 만들고 배포하고 결정한 일=do, 지연·반대·실패=hard), items는 제목(짧게) + 한 줄 설명, scene은 빈 문자열, tags 1-3개, milestone은 출범·첫 행사·공식 발표 같은 큰 일만 true, images [], works [], source는 출처들을 " · "로 이은 문자열, draft true.
+- 그 날짜 문서가 이미 있으면: 읽은 version을 if_version으로 걸고 update 합니다. 기존 items에 없는 새 항목만 뒤에 덧붙이고 source에 새 출처를 덧붙입니다. scene, status, milestone, images, works, tags는 절대 바꾸거나 지우지 않습니다(사용자가 쓴 소회 보호). draft 값도 그대로 둡니다.
 - 같은 일을 두 번 적지 않습니다(제목이 비슷하거나 같은 날 같은 행사면 같은 일로 보고, 새 정보가 있어도 기존 항목의 note는 고치지 말고 출처만 덧붙입니다).
 - 여러 문서는 batch로 한 번에 씁니다(50건 넘으면 나눠서). version_mismatch가 나면 해당 문서를 다시 읽고 다시 씁니다.
 - 마지막으로 meta/sync 에 lastRun(지금 시각), calendarMailIds, gptFileIds를 씁니다(if_version).
